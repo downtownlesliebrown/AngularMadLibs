@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html ng-app="Madlibs">
+    <head>
+        <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/css/bootstrap.min.css"/>
+        <link rel="stylesheet" type="text.css" href="madlibsAng.css"></script>
+        <meta charset="utf-8">
+        <title>Madlibs Angular</title>
+    </head>
+    <body ng-controller="Madlibs as ml">
+        <ul class="nav nav-pills">
+            <h3>Select a Story</h3>
+            <li ng-class="{active:tab===1}">
+                <a href ng-click = "tab = 1">{{ml.stories[0].name}}</a>
+            </li>
+            <li ng-class="{active:tab===2}">
+                <a href ng-click = "tab = 2">{{ml.stories[1].name}}</a>
+            </li>
+            <li ng-class="{active:tab===3}">
+                <a href ng-click = "tab = 3">{{ml.stories[2].name}}</a>
+            </li>
+        </ul>
+
+        <div>
+            <div class="panel" ng-show="tab===1">
+                <blockquote>
+                    {{ml.stories[0].text}}
+                </blockquote>
+            </div>
+            <div class="panel" ng-show="tab===2">
+                <blockquote>
+                    {{ml.stories[1].text}}
+                </blockquote>
+            </div>
+            <div class="panel" ng-show="tab===3">
+                <blockquote>
+                    {{ml.stories[2].text}}
+                </blockquote>
+            </div>
+        </div>
+
+        <div>
+            <h4>Please enter four of each word type in their respective boxes. Separate each word with a comma.</h4>
+            <h5>Adjectives</h5>
+            <textarea></textarea>
+            <h5>Adverbs</h5>
+            <textarea></textarea>
+            <h5>Nouns</h5>
+            <textarea></textarea>
+            <h5>Verbs</h5>
+            <textarea></textarea>
+            <input type="submit" value-"Populate words" />
+        </div>
+
+        <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+        <script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="controllers.js"></script>
+        <script type="text/javascript" src="services.js"></script>
+    </body>
+
+</html>
+
+
+
+<!-- <form name="storyForm" ng-controller="madlibs as ml" ng-submit "ml.showStory()">
+    <input ng-model="ml.story" type="radio" value="possiblestories[0]"/>Christmas Story
+    <input ng-model="ml.story" type="radio" value="possiblestories[1]"/>Shopping Story
+    <input ng-model="ml.story" type="radio" value="possiblestories[2]"/>Brainstorming Story
+</div> -->
