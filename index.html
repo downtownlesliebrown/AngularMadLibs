@@ -7,48 +7,31 @@
         <title>Madlibs Angular</title>
     </head>
     <body ng-controller="Madlibs as ml">
-        <ul class="nav nav-pills">
-            <h3>Select a Story</h3>
-            <li ng-class="{active:tab===1}">
-                <a href ng-click = "tab = 1">{{ml.stories[0].name}}</a>
-            </li>
-            <li ng-class="{active:tab===2}">
-                <a href ng-click = "tab = 2">{{ml.stories[1].name}}</a>
-            </li>
-            <li ng-class="{active:tab===3}">
-                <a href ng-click = "tab = 3">{{ml.stories[2].name}}</a>
-            </li>
-        </ul>
-
         <div>
-            <div class="panel" ng-show="tab===1">
-                <blockquote>
-                    {{ml.stories[0].text}}
-                </blockquote>
-            </div>
-            <div class="panel" ng-show="tab===2">
-                <blockquote>
-                    {{ml.stories[1].text}}
-                </blockquote>
-            </div>
-            <div class="panel" ng-show="tab===3">
-                <blockquote>
-                    {{ml.stories[2].text}}
-                </blockquote>
-            </div>
-        </div>
+           <label>Select a MadLib Story:</label>
+           <select ng-model="ml.pickedStory">
+               <option value="Christmas">Christmas</option>
+               <option value="Shopping">Shopping</option>
+               <option value="Brainstorm">Brainstorm</option>
+           </select>
+       </div>
 
         <div>
             <h4>Please enter four of each word type in their respective boxes. Separate each word with a comma.</h4>
             <h5>Adjectives</h5>
-            <textarea></textarea>
-            <h5>Adverbs</h5>
-            <textarea></textarea>
-            <h5>Nouns</h5>
-            <textarea></textarea>
+            <textarea ng-model="ml.wordsEntered.adjectives"></textarea>
             <h5>Verbs</h5>
-            <textarea></textarea>
-            <input type="submit" value-"Populate words" />
+            <textarea ng-model="ml.wordsEntered.verbs"></textarea>
+            <h5>Adverbs</h5>
+            <textarea ng-model="ml.wordsEntered.adverbs"></textarea>
+            <h5>Nouns</h5>
+            <textarea ng-model="ml.wordsEntered.nouns"></textarea>
+
+
+            <button class="btn" ng-click="ml.generateStory()">Populate Story</button>
+        </div>
+        <div>
+            {{ml.newStory}}
         </div>
 
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
@@ -60,9 +43,57 @@
 </html>
 
 
+<!-- <form>
+    <div class="form-group">
+        <div class="radio">
+            <input type="radio" name="Christmas" ng-model="formData.Christmas"> Christmas
+        </div>
+        <div class="radio">
+        <input type="radio" name="Shopping" ng-model="formData.Shopping"> Shopping
+        </div>
+        <div class="radio">
+        <input type="radio" name="Brainstorming" ng-model="formData.Brainstorming"> Brainstorming
+        </div>
+    </div>
+</form> -->
 
+<!-- <ul class="nav nav-pills">
+    <h3>Select a Story</h3>
+    <li ng-class="{active:ml.tab===1}">
+        <a href ng-click = "ml.tab = 1">{{ml.stories[0].name}}</a>
+    </li>
+    <li ng-class="{active:ml.tab===2}">
+        <a href ng-click = "ml.tab = 2">{{ml.stories[1].name}}</a>
+    </li>
+    <li ng-class="{active:ml.tab===3}">
+        <a href ng-click = "ml.tab = 3">{{ml.stories[2].name}}</a>
+    </li>
+</ul>
+
+<div>
+    <div class="panel" ng-show="ml.tab===1 && storyGenerated">
+        <blockquote>
+            {{ml.stories[0].text}}
+        </blockquote>
+    </div>
+    <div class="panel" ng-show="ml.tab===2 && storyGenerated">
+        <blockquote>
+            {{ml.stories[1].text}}
+        </blockquote>
+    </div>
+    <div class="panel" ng-show="ml.tab===3 && storyGenerated">
+        <blockquote>
+            {{ml.stories[2].text}}
+        </blockquote>
+    </div>
+</div> -->
 <!-- <form name="storyForm" ng-controller="madlibs as ml" ng-submit "ml.showStory()">
     <input ng-model="ml.story" type="radio" value="possiblestories[0]"/>Christmas Story
     <input ng-model="ml.story" type="radio" value="possiblestories[1]"/>Shopping Story
     <input ng-model="ml.story" type="radio" value="possiblestories[2]"/>Brainstorming Story
+</div> -->
+<!-- <div>
+    <input ng-model="ml.stories" type="radio" value="{{ml.stories[0].name}}" />Christmas
+    <input type="radio" value="{{ml.stories[1].name}}" />Shopping
+    <input type="radio" value="{{ml.stories[2].name}}" />Brainstorm
 </div> -->
